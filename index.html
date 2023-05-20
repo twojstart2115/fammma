@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>strimek.pl - gowno i huj</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+    <script src="https://cdn.jsdelivr.net/npm/@peertube/p2p-media-loader-core@1.0.14/build/p2p-media-loader-core.min.js" type="e61aa449c68034677213aa91-text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@peertube/p2p-media-loader-hlsjs@1.0.14/build/p2p-media-loader-hlsjs.min.js" type="e61aa449c68034677213aa91-text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/shaka-player/2.5.23/shaka-player.ui.js" type="e61aa449c68034677213aa91-text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p2p-media-loader-shaka@latest/build/p2p-media-loader-shaka.min.js" type="e61aa449c68034677213aa91-text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/2.5.23/controls.min.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        video {
+            background-color: black;
+            width: 100%;
+            height: 100%;
+        }
+
+        .box .container {
+            background-color: black;
+            position: absolute;
+            left: 0px;
+            right: 400px;
+            top: 0px;
+            height: 100%;
+        }
+
+        .box iframe {
+            position: absolute;
+            right: 0px;
+            width: 400px;
+            top: 0px;
+            height: 100%;
+        }
+
+        .box .text {
+            position: absolute;
+            left: 10px;
+            right: 410px;
+            top: 10px;
+            height: 100px;
+            z-index: 1000;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="vidcont" class="container">
+            <video id="video"></video>
+        </div>
+        <iframe id="chat" frameborder="0"
+            src="https://www.youtube.com/live_chat?v=80CTYP9aOME&embed_domain=strimek.pl"></iframe>
+        <div class="text">
+            COS NIE DZIALA = F5, CAŁA GALA! CAŁA KURWA A NIE TYLKO DARMOWE WALKI! BEZ REKLAM, BEZ ZJEBANYCH DISCORDOW, Z CHATEM! ZA DARMO!! BEZ LAGOW
+	    <br>
+            JEDYNY PROBLEM PLAYER MOZE SIE LADOWAC NAWET Z 30 SEKUND ALE POTEM ZAPIERDALA BO DZIALA TAK SAMO JAKBYSCIE OGLADALI NA OFICJALNEJ STRONIE
+        </div>
+    </div>
+    <script type="e61aa449c68034677213aa91-text/javascript">
+        shaka.polyfill.installAll();
+        if (shaka.Player.isBrowserSupported()) {
+            function onError(error) { console.error("Error code", error.code, "object", error); }
+            var player = new shaka.Player(document.getElementById("video"));
+            player.addEventListener("error", function (event) { onError(event.detail); });
+            player.configure({ drm: { clearKeys: { '30faec58dd945f2dbbad209de40f9654': 'c0f73974361dbbd80a797dcc39c6571c' } } });
+            new shaka.ui.Overlay(player, document.getElementById("video").parentElement, document.getElementById("video"));
+            
+            player.load("https://dash-live-streamonline.secure.footprint.net/out/v1/e66c121ea765480abc866e3a35c8ae1d/index.mpd").catch(onError);
+        } else {
+            alert('Browser is not supported!');
+        }
+    </script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e61aa449c68034677213aa91-|49" defer></script></body>
+
+</html>
+
